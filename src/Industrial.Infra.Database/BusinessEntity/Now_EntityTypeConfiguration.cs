@@ -18,7 +18,8 @@ namespace Industrial.Infra.Database.BusinessEntity
             builder
                 .HasOne(n => n.NowMes)
                 .WithOne(l => l.Now)
-                .HasForeignKey<Now>(now => now.ContainerID);
+                .HasForeignKey<Now>(now => now.ContainerID)
+                .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
         }
     }
 }

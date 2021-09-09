@@ -23,6 +23,10 @@ namespace Industrial.Infra.Database.UnitTest
         {
             using (var context = new BusinessDbContext(Options))
             {
+                context.Nows.RemoveRange(context.Nows);
+                context.NowMeses.RemoveRange(context.NowMeses);
+                context.Items.RemoveRange(context.Items);
+                context.Locations.RemoveRange(context.Locations);
                 var loc = new Location()
                 {
                     LocationID = 200,
@@ -38,22 +42,15 @@ namespace Industrial.Infra.Database.UnitTest
                 context.Add(loc);
                 context.Add(item);
                 context.SaveChanges();
-                //var nowmes = new NowMes();
-                //nowmes.ContainerID = (uint)1000;
-                //nowmes.ItemID = (ushort)333;
-                //nowmes.Qty = (ushort)100;
-                //nowmes.Item = item;
-                //var now = new Now()
-                //{
-                //    ContainerID = (uint)1000,
-                //    LocationID = (uint)200,
-                //    EnterTime = System.DateTime.Now,
-                //    Location = loc,
-                //    NowMes = nowmes
-                //};
-                //nowmes.Now = now;
-                //context.Nows.Add(now);
-                //context.SaveChanges();
+                var now = new Now()
+                {
+                    ContainerID =1000,
+                    LocationID = 200,
+                    EnterTime = System.DateTime.Now,
+                    Location = loc
+                };
+                context.Nows.Add(now);
+                context.SaveChanges();
             }
 
             using (var context = new BusinessDbContext(Options))
