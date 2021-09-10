@@ -1,5 +1,7 @@
 ﻿using Industrial.Infra.Database.BusinessEntity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Debug;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace Industrial.Infra.Database
 {
     public class BusinessDbContext : DbContext
     {
+        [Obsolete]
+        public static readonly LoggerFactory LoggerFactory = new LoggerFactory(new[] { new DebugLoggerProvider() });
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Now> Nows { get; set; }
         public DbSet<Location> Locations { get; set; }
@@ -19,6 +23,12 @@ namespace Industrial.Infra.Database
             : base(options)
         {
 
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseLoggerFactory(LoggerFactory);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

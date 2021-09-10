@@ -28,6 +28,7 @@ namespace Industrial.Infra.Database.BusinessEntity
         public DateTime EnterTime { get; set; }
 
         public Location Location { get; set; }
+        
         public NowMes NowMes { get; set; }
     }
 }

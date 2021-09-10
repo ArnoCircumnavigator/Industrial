@@ -65,7 +65,6 @@ namespace Industrial.Infra.Database.Migrations
                         column: x => x.LocationID,
                         principalTable: "KG_Location",
                         principalColumn: "LocationID",
-                        onUpdate: ReferentialAction.SetNull,
                         onDelete: ReferentialAction.Cascade);
                 });
 
