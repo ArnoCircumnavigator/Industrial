@@ -25,7 +25,7 @@ namespace Industrial.Infra.Database.UnitTest
         [TestMethod("00添加数据")]
         public void Test_AddNowObject()
         {
-            var dateTime = System.DateTime.Now;
+            DateTime dateTime = new DateTime(2021, 09, 10);
 
             #region 清空数据库（保存），并加入4行数据（保存）
             using (var context = new BusinessDbContext(Options))
@@ -74,26 +74,13 @@ namespace Industrial.Infra.Database.UnitTest
                 //context.NowMeses.RemoveRange(context.NowMeses);
                 //context.Nows.RemoveRange(context.Nows);
 
-                //var item = context.Items.First();
-                //var loc = context.Locations.First();
-                //Assert.AreEqual(context.Entry(item).State, EntityState.Deleted);
-                //Assert.AreEqual(context.Entry(loc).State, EntityState.Deleted);
-                var item = new Item()
-                {
-                    ItemID = 333,
-                    Name = "EFCore 的第一种物料"
-                };
-                var loc = new Location()
-                {
-                    LocationID = 200,
-                    Status = LocStatus.Normal,
-                    LoadStatus = LocLoadStatus.idle
-                };
-                Assert.AreEqual(context.Entry(item).State, EntityState.Detached);
-                Assert.AreEqual(context.Entry(loc).State, EntityState.Detached);
+                var item = context.Items.First();//由于上面的操作，这里拿出来的deleted状态的对象
+                var loc = context.Locations.First();
+                Assert.AreEqual(context.Entry(item).State, EntityState.Deleted);
+                Assert.AreEqual(context.Entry(loc).State, EntityState.Deleted);
                 var now = new Now()
                 {
-                    ContainerID = 1001,
+                    ContainerID = 1000,
                     EnterTime = dateTime,
                     Location = loc,//这个loc对象的状态是删除
                     NowMes = new NowMes()
@@ -155,6 +142,7 @@ namespace Industrial.Infra.Database.UnitTest
         [TestMethod("02级联更新")]
         public void Test_CascadeObject()
         {
+            DateTime dateTime = new DateTime(2021, 09, 10);
             using (var context = new BusinessDbContext(Options))
             {
                 context.NowMeses.RemoveRange(context.NowMeses);
@@ -162,6 +150,7 @@ namespace Industrial.Infra.Database.UnitTest
                 context.Items.RemoveRange(context.Items);
                 context.Locations.RemoveRange(context.Locations);
                 context.SaveChanges();
+
                 var loc = new Location()
                 {
                     LocationID = 200,
@@ -179,20 +168,17 @@ namespace Industrial.Infra.Database.UnitTest
                 {
                     ContainerID = 1000,
                     LocationID = 200,
-                    EnterTime = System.DateTime.Now,
+                    EnterTime = dateTime,
                     Location = loc,
                     NowMes = new NowMes()
                     {
-                        ItemID = 333,
+                        Item = item,
                         Qty = 100,
                     }
                 };
-                context.Add(loc);
-                context.Add(item);
                 context.Add(now);
                 context.SaveChanges();
             }
-
             using (var context = new BusinessDbContext(Options))
             {
                 /*
@@ -206,24 +192,29 @@ namespace Industrial.Infra.Database.UnitTest
                 Now n = context.Nows
                     .Include(n => n.NowMes)
                     .Include(n => n.Location)
+                    .Include(n => n.NowMes.Item)
                     .First();
                 context.Remove(n);
+                Assert.AreEqual(context.Entry(n.NowMes).State, EntityState.Deleted);
 
-
-                Now now = new()
+                var now = new Now()
                 {
-                    ContainerID = 2000,
-                    LocationID = n.LocationID,
-                    EnterTime = DateTime.Now,
+                    ContainerID = 1000,
+                    LocationID = 200,
+                    EnterTime = dateTime,
                     Location = n.Location,
                     NowMes = new NowMes()
                     {
-                        ItemID = 333,
+                        Item = n.NowMes.Item,
                         Qty = 100,
-                    },
+                    }
                 };
+                Assert.AreEqual(context.Entry(n.Location).State, EntityState.Unchanged);//由于删Now，不会删Loc
+                Assert.AreEqual(context.Entry(n.NowMes).State, EntityState.Deleted);//由于删Now,会删NowMes
                 context.Add(now);
-                context.SaveChanges();
+                Assert.AreEqual(context.Entry(now).State, EntityState.Added);
+                var i = context.SaveChanges();
+                Assert.AreEqual(i, 0);
             }
         }
         [TestMethod("03单事务里面的删除在插入（同样的值）")]
@@ -257,16 +248,13 @@ namespace Industrial.Infra.Database.UnitTest
                 Assert.IsTrue(context.Entry(item).State == EntityState.Deleted);
                 var newT = new Item()//新建一个一模一样的
                 {
-                    ItemID = 333,
-                    Name = "EFCore 的第一种物料"
+                    ItemID = item.ItemID,
+                    Name = item.Name,
                 };
                 context.Add(newT);//保存
                 Assert.IsTrue(context.Entry(newT).State == EntityState.Added);
                 var i = context.SaveChanges();
                 Assert.AreEqual(i, 0);
-
-                //ts = context.Items.ToList();
-                //Assert.AreEqual(ts.Count, 1);
             }
         }
     }
