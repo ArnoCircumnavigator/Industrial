@@ -17,9 +17,11 @@ namespace Industrial.Infra.Database.UnitTest
         static DbContextOptions<BusinessDbContext> Options;
         static T001_EFCoreBase()
         {
-
+            //Options = new DbContextOptionsBuilder<BusinessDbContext>()
+            //    .UseMySQL(CONNECTSTRING)
+            //    .Options;
             Options = new DbContextOptionsBuilder<BusinessDbContext>()
-                .UseMySQL(CONNECTSTRING)
+                .UseInMemoryDatabase(nameof(T001_EFCoreBase) + "InMemoryDatabase")
                 .Options;
         }
         [TestMethod("00Ìí¼ÓÊý¾Ý")]
