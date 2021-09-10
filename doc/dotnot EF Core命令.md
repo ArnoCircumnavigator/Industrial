@@ -1,3 +1,9 @@
+- 安装EF Core CLI工具
+
+  ```shell
+  dotnet tool install --global dotnet-ef
+  ```
+  
 - 创建一个迁移
 
   - 项目安装对应的包，可以参考Industrial.Database
