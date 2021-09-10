@@ -20,6 +20,12 @@ namespace Industrial.Infra.Database.BusinessEntity
                 .HasOne(nowmes => nowmes.Item)
                 .WithMany()
                 .HasForeignKey(nowmes => nowmes.ItemID);
+
+
+            builder
+                .HasOne(n => n.Now)
+                .WithOne(l => l.NowMes)
+                .HasForeignKey<NowMes>(nowmes => nowmes.ContainerID);
         }
     }
 }

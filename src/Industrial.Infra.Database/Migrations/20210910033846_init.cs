@@ -49,11 +49,31 @@ namespace Industrial.Infra.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "KG_NowMes",
+                name: "KG_Now",
                 columns: table => new
                 {
                     ContainerID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    LocationID = table.Column<int>(type: "int", nullable: false),
+                    EnterTime = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_KG_Now", x => x.ContainerID);
+                    table.ForeignKey(
+                        name: "FK_KG_Now_KG_Location_LocationID",
+                        column: x => x.LocationID,
+                        principalTable: "KG_Location",
+                        principalColumn: "LocationID",
+                        onUpdate: ReferentialAction.SetNull,
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "KG_NowMes",
+                columns: table => new
+                {
+                    ContainerID = table.Column<int>(type: "int", nullable: false),
                     Qty = table.Column<int>(type: "int", nullable: false),
                     ItemID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -66,29 +86,10 @@ namespace Industrial.Infra.Database.Migrations
                         principalTable: "KG_Item",
                         principalColumn: "ItemID",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "KG_Now",
-                columns: table => new
-                {
-                    ContainerID = table.Column<int>(type: "int", nullable: false),
-                    LocationID = table.Column<int>(type: "int", nullable: false),
-                    EnterTime = table.Column<DateTime>(type: "datetime", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_KG_Now", x => x.ContainerID);
                     table.ForeignKey(
-                        name: "FK_KG_Now_KG_Location_LocationID",
-                        column: x => x.LocationID,
-                        principalTable: "KG_Location",
-                        principalColumn: "LocationID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_KG_Now_KG_NowMes_ContainerID",
+                        name: "FK_KG_NowMes_KG_Now_ContainerID",
                         column: x => x.ContainerID,
-                        principalTable: "KG_NowMes",
+                        principalTable: "KG_Now",
                         principalColumn: "ContainerID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -110,16 +111,16 @@ namespace Industrial.Infra.Database.Migrations
                 name: "KG_Job");
 
             migrationBuilder.DropTable(
-                name: "KG_Now");
-
-            migrationBuilder.DropTable(
-                name: "KG_Location");
-
-            migrationBuilder.DropTable(
                 name: "KG_NowMes");
 
             migrationBuilder.DropTable(
                 name: "KG_Item");
+
+            migrationBuilder.DropTable(
+                name: "KG_Now");
+
+            migrationBuilder.DropTable(
+                name: "KG_Location");
         }
     }
 }

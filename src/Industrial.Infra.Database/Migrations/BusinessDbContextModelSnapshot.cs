@@ -68,6 +68,7 @@ namespace Industrial.Infra.Database.Migrations
             modelBuilder.Entity("Industrial.Infra.Database.BusinessEntity.Now", b =>
                 {
                     b.Property<int>("ContainerID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EnterTime")
@@ -86,7 +87,6 @@ namespace Industrial.Infra.Database.Migrations
             modelBuilder.Entity("Industrial.Infra.Database.BusinessEntity.NowMes", b =>
                 {
                     b.Property<int>("ContainerID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("ItemID")
@@ -104,12 +104,6 @@ namespace Industrial.Infra.Database.Migrations
 
             modelBuilder.Entity("Industrial.Infra.Database.BusinessEntity.Now", b =>
                 {
-                    b.HasOne("Industrial.Infra.Database.BusinessEntity.NowMes", "NowMes")
-                        .WithOne("Now")
-                        .HasForeignKey("Industrial.Infra.Database.BusinessEntity.Now", "ContainerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Industrial.Infra.Database.BusinessEntity.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationID")
@@ -117,12 +111,16 @@ namespace Industrial.Infra.Database.Migrations
                         .IsRequired();
 
                     b.Navigation("Location");
-
-                    b.Navigation("NowMes");
                 });
 
             modelBuilder.Entity("Industrial.Infra.Database.BusinessEntity.NowMes", b =>
                 {
+                    b.HasOne("Industrial.Infra.Database.BusinessEntity.Now", "Now")
+                        .WithOne("NowMes")
+                        .HasForeignKey("Industrial.Infra.Database.BusinessEntity.NowMes", "ContainerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Industrial.Infra.Database.BusinessEntity.Item", "Item")
                         .WithMany()
                         .HasForeignKey("ItemID")
@@ -130,11 +128,13 @@ namespace Industrial.Infra.Database.Migrations
                         .IsRequired();
 
                     b.Navigation("Item");
+
+                    b.Navigation("Now");
                 });
 
-            modelBuilder.Entity("Industrial.Infra.Database.BusinessEntity.NowMes", b =>
+            modelBuilder.Entity("Industrial.Infra.Database.BusinessEntity.Now", b =>
                 {
-                    b.Navigation("Now");
+                    b.Navigation("NowMes");
                 });
 #pragma warning restore 612, 618
         }
