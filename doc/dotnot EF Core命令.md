@@ -19,4 +19,10 @@
   dotnet ef database update
   ```
 
-- 
+# 更换数据库
+
+- 在工程中导入对应的Nuget包
+- 删除现有Migrations文件（删除之前先用git备份，以防万一）
+- 在服务器上创建对应的数据库
+- 修改Dbcontext配置
+- 创建迁移文件，迁移

@@ -12,7 +12,6 @@ namespace Industrial.Infra.Database
 {
     public class BusinessDbContext : DbContext
     {
-        [Obsolete]
         public static readonly LoggerFactory LoggerFactory = new LoggerFactory(new[] { new DebugLoggerProvider() });
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Now> Nows { get; set; }

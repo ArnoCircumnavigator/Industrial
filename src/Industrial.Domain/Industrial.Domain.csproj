@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Industrial.Infra.Database\Industrial.Infra.Database.csproj" />
+    <ProjectReference Include="..\Industrial.Infra.MachineryDrive\Industrial.Infra.MachineryDrive.csproj" />
+  </ItemGroup>
+
+</Project>

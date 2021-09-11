@@ -12,6 +12,9 @@ namespace Industrial.Infra.Database
     {
         public BusinessDbContext CreateDbContext(string[] args)
         {
+            /*
+             * Mysql
+             */
             var optionsBuilder = new DbContextOptionsBuilder<BusinessDbContext>();
             optionsBuilder.UseMySQL(@"Server=127.0.0.1;Database=TestEFCore;uid=root;pwd=DBM001");
             return new BusinessDbContext(optionsBuilder.Options);
@@ -19,9 +22,9 @@ namespace Industrial.Infra.Database
             /*
              * sqlServer
              */
-            var optionsBuilder = new DbContextOptionsBuilder<BusinessDbContext>();
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Test");
-            return new BusinessDbContext(optionsBuilder.Options);
+            //var optionsBuilder = new DbContextOptionsBuilder<BusinessDbContext>();
+            //optionsBuilder.UseSqlServer(@"Server=127.0.0.1;Database=TestEFCore;uid=sa;pwd=DBM001");
+            //return new BusinessDbContext(optionsBuilder.Options);
 
             /*
              * oracle的方式
@@ -29,7 +32,7 @@ namespace Industrial.Infra.Database
             //var optionsBuilder = new DbContextOptionsBuilder<BusinessDbContext>();
             //optionsBuilder.UseOracle(@"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=TESTEFCORE)));User Id=DBM;Password=DBM001;");
             //return new BusinessDbContext(optionsBuilder.Options);
-            
+
         }
     }
 }
