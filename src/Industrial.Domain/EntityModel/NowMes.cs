@@ -6,16 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Industrial.Infra.Database.BusinessEntity
+namespace Industrial.Domain.EntityModel
 {
-    [Table("KG_NowMes")]
     public class NowMes
     {
-        [Required]
         public int ContainerID { get; set; }
-        [Required]
         public int Qty { get; set; }
-        [Required]
         public int ItemID { get; set; }
 
 

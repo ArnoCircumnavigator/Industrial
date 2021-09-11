@@ -1,4 +1,4 @@
-using Industrial.Infra.Database.BusinessEntity;
+using Industrial.Domain.EntityModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;

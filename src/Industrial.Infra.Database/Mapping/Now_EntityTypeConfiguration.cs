@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Industrial.Domain.EntityModel;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Industrial.Infra.Database.BusinessEntity
+namespace Industrial.Infra.Database.Mapping
 {
     public class Now_EntityTypeConfiguration : IEntityTypeConfiguration<Now>
     {

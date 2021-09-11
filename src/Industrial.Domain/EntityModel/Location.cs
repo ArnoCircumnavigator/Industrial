@@ -7,19 +7,15 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Industrial.Infra.Database.BusinessEntity
+namespace Industrial.Domain.EntityModel
 {
-    [Table("KG_Location")]
     public class Location
     {
         /// <summary>
         /// 位置ID
         /// </summary>
-        [Required]
         public int LocationID { get; set; }
-        [Required]
         public LocStatus Status { get; set; } = LocStatus.Normal;
-        [Required]
         public LocLoadStatus LoadStatus { get; set; } = LocLoadStatus.idle;
     }
     /// <summary>

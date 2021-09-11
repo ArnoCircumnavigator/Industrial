@@ -6,14 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Industrial.Infra.Database.BusinessEntity
+namespace Industrial.Domain.EntityModel
 {
-    [Table("KG_Item")]
     public class Item
     {
-        [Required]
-        public int ItemID { get; set; }
-        [Required]
-        public string Name { get; set; }
+        public int ItemID { get; private set; }
+        public string Name { get; private set; }
     }
 }
