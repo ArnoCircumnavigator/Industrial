@@ -101,6 +101,10 @@ namespace Industrial.Infra.Database.UnitTest
             using (var context = new BusinessDbContext(Options))
             {
                 var nows = context.Nows.Include(n => n.NowMes).ToList();
+                Assert.AreEqual(nows.ToList().Count, 0);
+                Assert.AreEqual(context.NowMeses.ToList().Count, 0);
+                Assert.AreEqual(context.Locations.ToList().Count, 0);
+                Assert.AreEqual(context.Items.ToList().Count, 0);
                 Assert.AreEqual(nows.Count, 0);
             }
         }

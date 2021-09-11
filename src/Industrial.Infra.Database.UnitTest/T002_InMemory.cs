@@ -96,10 +96,10 @@ namespace Industrial.Infra.Database.UnitTest
             {
                 var nows = context.Nows.Include(n => n.NowMes).ToList();
                 var meses = context.NowMeses.ToList();
-                Assert.AreEqual(nows.Count, 0);
-                Assert.AreEqual(meses.Count, 0);
-                Assert.AreEqual(context.Locations.Count(), 0);
-                Assert.AreEqual(context.Items.Count(), 0);
+                Assert.AreEqual(nows.ToList().Count, 0);
+                Assert.AreEqual(meses.ToList().Count, 0);
+                Assert.AreEqual(context.Locations.ToList().Count(), 0);
+                Assert.AreEqual(context.Items.ToList().Count(), 0);
             }
         }
     }
