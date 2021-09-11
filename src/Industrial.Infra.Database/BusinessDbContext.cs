@@ -13,17 +13,14 @@ namespace Industrial.Infra.Database
 {
     public class BusinessDbContext : DbContext
     {
-        public static readonly LoggerFactory LoggerFactory = new LoggerFactory(new[] { new DebugLoggerProvider() });
-        public DbSet<Now> Nows { get; set; }
-        public DbSet<Location> Locations { get; set; }
         public DbSet<Item> Items { get; set; }
-        public DbSet<NowMes> NowMeses { get; set; }
         public BusinessDbContext(DbContextOptions<BusinessDbContext> options)
             : base(options)
         {
 
         }
 
+        public static readonly LoggerFactory LoggerFactory = new LoggerFactory(new[] { new DebugLoggerProvider() });
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -32,9 +29,8 @@ namespace Industrial.Infra.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            new Now_EntityTypeConfiguration().Configure(modelBuilder.Entity<Now>());
-            new Location_EntityTypeConfiguration().Configure(modelBuilder.Entity<Location>());
-            new NowMes_EntityTypeConfiguration().Configure(modelBuilder.Entity<NowMes>());
+            //new Item_EntityTypeConfiguration().Configure(modelBuilder.Entity<Item>());
+            modelBuilder.ApplyConfiguration(new Item_EntityTypeConfiguration());
         }
     }
 }

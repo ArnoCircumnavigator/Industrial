@@ -13,7 +13,16 @@ namespace Industrial.Infra.Database.Mapping
     {
         public void Configure(EntityTypeBuilder<Item> builder)
         {
-            builder.HasKey(n => n.ItemID);
+            builder.ToTable("KG_ITEM");
+            
+            builder.HasKey(x => x.ItemID);
+
+
+            builder.Property(x => x.ItemID)
+                .HasMaxLength(8).IsRequired();
+            builder.Property(x => x.Name)
+                .HasMaxLength(20).IsRequired();
+            
         }
     }
 }

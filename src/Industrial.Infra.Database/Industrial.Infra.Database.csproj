@@ -6,11 +6,8 @@
 
   <ItemGroup>
     <Compile Remove="EntityModel\**" />
-    <Compile Remove="Migrations\**" />
     <EmbeddedResource Remove="EntityModel\**" />
-    <EmbeddedResource Remove="Migrations\**" />
     <None Remove="EntityModel\**" />
-    <None Remove="Migrations\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +28,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Industrial.Domain\Industrial.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
