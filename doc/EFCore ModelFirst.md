@@ -1,0 +1,5 @@
+-  创建Model
+-  创建ModelSnapshot的子类
+  -  重写BuildModel方法（进一步约束创建数据表的过程）
+-  创建迁移文件
+-  更新数据库

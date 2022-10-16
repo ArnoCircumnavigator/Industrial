@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Industrial.Infra.Database.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,26 @@ using System.Threading.Tasks;
 
 namespace Industrial.Infra.Database
 {
-    internal class ContextFactory : IDesignTimeDbContextFactory<BusinessDbContext>
+    internal class ContextFactory : IDesignTimeDbContextFactory<EfCoreContext>
     {
-        public BusinessDbContext CreateDbContext(string[] args)
+        /*
+         * 不同的数据库就百度找一下响应驱动的Nuget包即可
+         */
+
+        public EfCoreContext CreateDbContext(string[] args)
         {
             /*
              * Mysql
              */
-            var optionsBuilder = new DbContextOptionsBuilder<BusinessDbContext>();
-            optionsBuilder.UseMySQL(@"Server=127.0.0.1;Database=TestEFCore;uid=root;pwd=DBM001");
-            return new BusinessDbContext(optionsBuilder.Options);
+            var optionsBuilder = new DbContextOptionsBuilder<EfCoreContext>();
+            var serverName = "mysql-test1.mysql.database.chinacloudapi.cn";
+            var dataBaseName = "TestEFCore";
+            var userID = "DBA";
+            var password = "Noproblem001";
+            //optionsBuilder.UseMySQL($"Server={serverName};Database={dataBaseName};uid={userID};pwd={password}");
+            var server = ServerVersion.Create(new Version(5, 7), Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MySql);
+            optionsBuilder.UseMySql($"Server={serverName};Database={dataBaseName};uid={userID};pwd={password}", server);
+            return new EfCoreContext(optionsBuilder.Options);
 
             /*
              * sqlServer

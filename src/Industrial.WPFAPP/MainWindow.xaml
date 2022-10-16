@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Industrial.WPFAPP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="某某调度系统" Height="450" Width="800">
     <Grid>
+        <Grid Margin="209,33,60,70">
+            <Rectangle HorizontalAlignment="Left" Height="280" Margin="544,59,0,0" Stroke="Black" VerticalAlignment="Top" Width="215"/>
+            <Rectangle HorizontalAlignment="Left" Height="38" Margin="544,59,0,0" Stroke="Black" VerticalAlignment="Top" Width="215" RenderTransformOrigin="0.5,0.5"/>
+            <Button x:Name="bt_WeChat" Content="微信" HorizontalAlignment="Left" Margin="544,59,0,0" VerticalAlignment="Top" Height="38" Width="108" Background="#00DDDDDD" FontFamily="Brush Script MT" FontWeight="Bold"/>
+            <Button x:Name="微信_Copy" Content="Button" HorizontalAlignment="Left" Margin="651,59,0,0" VerticalAlignment="Top" Height="38" Width="108"/>
+        </Grid>
 
     </Grid>
 </Window>
