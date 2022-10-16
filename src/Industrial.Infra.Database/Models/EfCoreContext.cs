@@ -18,7 +18,7 @@ namespace Industrial.Infra.Database.Models
         public virtual DbSet<KgJob> KgJobs { get; set; }
         public virtual DbSet<KgLocation> KgLocations { get; set; }
         public virtual DbSet<KgNow> KgNows { get; set; }
-        public virtual DbSet<KgNowme> KgNowmes { get; set; }
+        public virtual DbSet<KgNowmes> KgNowmes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -121,7 +121,7 @@ namespace Industrial.Infra.Database.Models
                     .HasConstraintName("FK_KG_Now_KG_Location_LocationID");
             });
 
-            modelBuilder.Entity<KgNowme>(entity =>
+            modelBuilder.Entity<KgNowmes>(entity =>
             {
                 entity.HasKey(e => e.ContainerId)
                     .HasName("PRIMARY");
@@ -142,8 +142,8 @@ namespace Industrial.Infra.Database.Models
                 entity.Property(e => e.Qty).HasColumnType("int(11)");
 
                 entity.HasOne(d => d.Container)
-                    .WithOne(p => p.KgNowme)
-                    .HasForeignKey<KgNowme>(d => d.ContainerId)
+                    .WithOne(p => p.KgNowmes)
+                    .HasForeignKey<KgNowmes>(d => d.ContainerId)
                     .HasConstraintName("FK_KG_NowMes_KG_Now_ContainerID");
 
                 entity.HasOne(d => d.Item)

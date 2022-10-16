@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Industrial.Infra.Database.UnitTest
 {
-    [TestClass]
+    //[TestClass]
     public class T001_EFCoreBase
     {
         static string serverName = "mysql-test1.mysql.database.chinacloudapi.cn";
@@ -60,7 +60,7 @@ namespace Industrial.Infra.Database.UnitTest
                 ContainerId = 1000,
                 EnterTime = dateTime,
                 Location = loc,
-                KgNowme = new KgNowme()
+                KgNowmes = new KgNowmes()
                 {
                     Item = item,
                     Qty = 100,
@@ -84,7 +84,7 @@ namespace Industrial.Infra.Database.UnitTest
                 ContainerId = 1000,
                 EnterTime = dateTime,
                 Location = loc1,//这个loc对象的状态是删除
-                KgNowme = new KgNowme()
+                KgNowmes = new KgNowmes()
                 {
                     Item = item1,//这个item的状态是删除
                     Qty = 100,
@@ -99,7 +99,7 @@ namespace Industrial.Infra.Database.UnitTest
             #endregion
 
             //Assert
-            var KgNows = context.KgNows.Include(n => n.KgNowme).ToList();
+            var KgNows = context.KgNows.Include(n => n.KgNowmes).ToList();
             Assert.AreEqual(context.KgNowmes.ToList().Count, 1);
             Assert.AreEqual(context.KgLocations.ToList().Count, 0);
             Assert.AreEqual(context.KgItems.ToList().Count, 0);
@@ -165,7 +165,7 @@ namespace Industrial.Infra.Database.UnitTest
                     LocationId = 200,
                     EnterTime = dateTime,
                     Location = loc,
-                    KgNowme = new KgNowme()
+                    KgNowmes = new KgNowmes()
                     {
                         Item = item,
                         Qty = 100,
@@ -185,12 +185,12 @@ namespace Industrial.Infra.Database.UnitTest
                 //context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
 
                 KgNow n = context.KgNows
-                    .Include(n => n.KgNowme)
+                    .Include(n => n.KgNowmes)
                     .Include(n => n.Location)
-                    .Include(n => n.KgNowme.Item)
+                    .Include(n => n.KgNowmes.Item)
                     .First();
                 context.Remove(n);
-                Assert.AreEqual(context.Entry(n.KgNowme).State, EntityState.Deleted);
+                Assert.AreEqual(context.Entry(n.KgNowmes).State, EntityState.Deleted);
 
                 var now = new KgNow()
                 {
@@ -198,14 +198,14 @@ namespace Industrial.Infra.Database.UnitTest
                     LocationId = 200,
                     EnterTime = dateTime,
                     Location = n.Location,
-                    KgNowme = new KgNowme()
+                    KgNowmes = new KgNowmes()
                     {
-                        Item = n.KgNowme.Item,
+                        Item = n.KgNowmes.Item,
                         Qty = 100,
                     }
                 };
                 Assert.AreEqual(context.Entry(n.Location).State, EntityState.Unchanged);//由于删Now，不会删Loc
-                Assert.AreEqual(context.Entry(n.KgNowme).State, EntityState.Deleted);//由于删Now,会删NowMes
+                Assert.AreEqual(context.Entry(n.KgNowmes).State, EntityState.Deleted);//由于删Now,会删NowMes
                 context.Add(now);
                 Assert.AreEqual(context.Entry(now).State, EntityState.Added);
 

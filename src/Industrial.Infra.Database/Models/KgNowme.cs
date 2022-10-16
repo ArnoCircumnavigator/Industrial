@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Industrial.Infra.Database.Models
 {
-    public partial class KgNowme
+    public partial class KgNowmes
     {
         public int ContainerId { get; set; }
         public int Qty { get; set; }

@@ -10,6 +10,6 @@ namespace Industrial.Infra.Database.Models
         public DateTime EnterTime { get; set; }
 
         public virtual KgLocation Location { get; set; }
-        public virtual KgNowme KgNowme { get; set; }
+        public virtual KgNowmes KgNowmes { get; set; }
     }
 }

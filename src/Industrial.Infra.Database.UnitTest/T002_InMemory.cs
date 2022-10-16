@@ -51,7 +51,7 @@ namespace Industrial.Infra.Database.UnitTest
                     ContainerId = 1000,
                     EnterTime = dateTime,
                     Location = loc,
-                    KgNowme = new KgNowme()
+                    KgNowmes = new KgNowmes()
                     {
                         Item = item,
                         Qty = 100,
@@ -80,7 +80,7 @@ namespace Industrial.Infra.Database.UnitTest
                     ContainerId = 1000,
                     EnterTime = dateTime,
                     Location = loc,//这个loc对象的状态是删除
-                    KgNowme = new KgNowme()
+                    KgNowmes = new KgNowmes()
                     {
                         Item = item,//这个item的状态是删除
                         Qty = 100,
@@ -94,7 +94,7 @@ namespace Industrial.Infra.Database.UnitTest
             //Assert
             using (var context = new EfCoreContext(Options))
             {
-                var KgNows = context.KgNows.Include(n => n.KgNowme).ToList();
+                var KgNows = context.KgNows.Include(n => n.KgNowmes).ToList();
                 var meses = context.KgNowmes.ToList();
                 Assert.AreEqual(KgNows.ToList().Count, 0);
                 Assert.AreEqual(meses.ToList().Count, 0);

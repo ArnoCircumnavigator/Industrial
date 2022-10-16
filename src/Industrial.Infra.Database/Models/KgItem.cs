@@ -7,12 +7,12 @@ namespace Industrial.Infra.Database.Models
     {
         public KgItem()
         {
-            KgNowmes = new HashSet<KgNowme>();
+            KgNowmes = new HashSet<KgNowmes>();
         }
 
         public int ItemId { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<KgNowme> KgNowmes { get; set; }
+        public virtual ICollection<KgNowmes> KgNowmes { get; set; }
     }
 }
