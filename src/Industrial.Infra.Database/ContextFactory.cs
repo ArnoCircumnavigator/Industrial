@@ -26,7 +26,7 @@ namespace Industrial.Infra.Database
             var userID = "DBA";
             var password = "Noproblem001";
             //optionsBuilder.UseMySQL($"Server={serverName};Database={dataBaseName};uid={userID};pwd={password}");
-            var server = ServerVersion.Create(new Version(5, 7), Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MySql);
+            var server = ServerVersion.Create(new Version(5, 0), Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MySql);
             optionsBuilder.UseMySql($"Server={serverName};Database={dataBaseName};uid={userID};pwd={password}", server);
             return new EfCoreContext(optionsBuilder.Options);
 

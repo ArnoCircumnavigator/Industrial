@@ -6,8 +6,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\_Tool.EFCore CLI\_Tool.EFCore CLI.csproj" />
-  </ItemGroup>
-
 </Project>

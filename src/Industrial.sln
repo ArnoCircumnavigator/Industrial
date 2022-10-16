@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31613.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Industrial.Infra.Database.UnitTest", "Industrial.Infra.Database.UnitTest\Industrial.Infra.Database.UnitTest.csproj", "{02ED4D55-5759-4214-9A51-AA0AEF29EDAF}"
 EndProject
@@ -16,8 +16,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Industrial.Domain.UnitTest", "Industrial.Domain.UnitTest\Industrial.Domain.UnitTest.csproj", "{C937D825-42CB-4376-A229-0847ABAC661B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Industrial.Infra.MachineryDrive.UnitTest", "Industrial.Infra.MachineryDrive.UnitTest\Industrial.Infra.MachineryDrive.UnitTest.csproj", "{9B92F2F1-A888-4D34-9A02-F9481CFF690B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Tool.EFCore CLI", "_Tool.EFCore CLI\_Tool.EFCore CLI.csproj", "{B508B56A-7398-4C74-A8B4-B75EADBA314E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +51,6 @@ Global
 		{9B92F2F1-A888-4D34-9A02-F9481CFF690B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B92F2F1-A888-4D34-9A02-F9481CFF690B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B92F2F1-A888-4D34-9A02-F9481CFF690B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B508B56A-7398-4C74-A8B4-B75EADBA314E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B508B56A-7398-4C74-A8B4-B75EADBA314E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B508B56A-7398-4C74-A8B4-B75EADBA314E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B508B56A-7398-4C74-A8B4-B75EADBA314E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

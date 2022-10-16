@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Industrial.Infra.Database\Industrial.Infra.Database.csproj" />
-    <ProjectReference Include="..\_Tool.EFCore CLI\_Tool.EFCore CLI.csproj" />
   </ItemGroup>
 
 </Project>
