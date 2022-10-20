@@ -19,11 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Industrial.Infra.MachineryD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Industrial.Infra.Commumication", "Industrial.Infra.Commumication\Industrial.Infra.Commumication.csproj", "{DFB325D9-11C3-43E8-9300-7DD83A239F86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBook", "AddressBook\AddressBook.csproj", "{1536808C-31EF-4578-8D55-149CC03D43A1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Industrial.Infra.Protobuf", "Industrial.Infra.Protobuf\Industrial.Infra.Protobuf.csproj", "{7D8A836C-2164-452F-AE95-DFEBF0DC3E77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Industrial.Infra.Protobuf.UnitTest", "Industrial.Infra.Protobuf.UnitTest\Industrial.Infra.Protobuf.UnitTest.csproj", "{68647FFF-9FE2-4753-9205-24D07C97E643}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Industrial.Infra.Protobuf.UnitTest", "Industrial.Infra.Protobuf.UnitTest\Industrial.Infra.Protobuf.UnitTest.csproj", "{68647FFF-9FE2-4753-9205-24D07C97E643}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,10 +61,6 @@ Global
 		{DFB325D9-11C3-43E8-9300-7DD83A239F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFB325D9-11C3-43E8-9300-7DD83A239F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFB325D9-11C3-43E8-9300-7DD83A239F86}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1536808C-31EF-4578-8D55-149CC03D43A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1536808C-31EF-4578-8D55-149CC03D43A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1536808C-31EF-4578-8D55-149CC03D43A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1536808C-31EF-4578-8D55-149CC03D43A1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D8A836C-2164-452F-AE95-DFEBF0DC3E77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D8A836C-2164-452F-AE95-DFEBF0DC3E77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D8A836C-2164-452F-AE95-DFEBF0DC3E77}.Release|Any CPU.ActiveCfg = Release|Any CPU
