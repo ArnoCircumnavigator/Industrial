@@ -1,0 +1,17 @@
+syntax = "proto2";
+option csharp_namespace = "Industrial.Infra.Protobuf";
+
+//注：不支持“继承”的玩法
+
+// [START messages]
+
+message SessionRequest {
+  required string uid = 1;
+  required string opTimestamp = 2;
+}
+
+message SessionResponse {
+  required bool succeed = 1;
+  optional string sessionId = 2;
+  required string opTimestamp = 3;
+}
