@@ -1,5 +1,0 @@
-- var serverName = "mysql-test1.mysql.database.chinacloudapi.cn";
-- var dataBaseName = "TestEFCore";
-- var userID = "DBA";
-- var password = "Noproblem001";
-- optionsBuilder.UseMySQL($"Server={serverName};Database={dataBaseName};uid={userID};pwd={password}");
