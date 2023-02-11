@@ -16,10 +16,12 @@ namespace Industrial.Infra.MachineryDriver.SiemensPLC.HslCommunication.UnitTest
         {
             Console.WriteLine("HslCommunication通信测试开始");
 
-            var client = new SiemensS7Net(SiemensPLCS.S1200, IP_ADDRESS);
-            client.Rack = RACK;
-            client.Slot = SLOT;
-            client.ConnectTimeOut = 3000;//3秒超时
+            SiemensS7Net client = new(SiemensPLCS.S1200, IP_ADDRESS)
+            {
+                Rack = RACK,
+                Slot = SLOT,
+                ConnectTimeOut = 3000//3秒超时
+            };
 
             var operate = client.ConnectCloseAsync().Result;
 

@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DDD_Infrastructure\Industrial.Infra.DDDesign.CoreFramework\Industrial.Infra.DDDesign.CoreFramework.csproj" />
+  </ItemGroup>
 
 </Project>
